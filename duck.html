@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Classroom</title>
+  <link rel="icon" href="https://ssl.gstatic.com/classroom/favicon.png" type="image/png" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    header, .menu {
+      display: none;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem auto;
+    }
+
+    .menu button {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .menu button:hover {
+      background-color: #e8f0fe;
+    }
+
+    iframe {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      z-index: 999;
+    }
+
+    iframe.active {
+      display: block;
+    }
+
+    #login {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #login input {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    #login button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="login">
+    <input type="password" id="password" placeholder="Enter password" />
+    <button onclick="checkPassword()">Access Site</button>
+  </div>
+
+  <header id="header">Google Classroom</header>
+
+  <div class="menu">
+    <button onclick="showSite('art')">art.fullsusmtb.org</button>
+    <button onclick="showSite('duck')">duck.quackprep.com</button>
+  </div>
+
+  <iframe id="art" src="https://art.fullsusmtb.org" allowfullscreen allow="fullscreen"></iframe>
+  <iframe id="duck" src="https://duck.quackprep.com" allowfullscreen allow="fullscreen"></iframe>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById('password').value;
+      if (input === 'duck900') {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('header').style.display = 'block';
+        document.querySelector('.menu').style.display = 'flex';
+      } else {
+        alert('Incorrect password');
+      }
+    }
+
+    function showSite(site) {
+      document.querySelectorAll('iframe').forEach(frame => frame.classList.remove('active'));
+      document.getElementById(site).classList.add('active');
+      document.querySelector('.menu').style.display = 'none';
+      document.getElementById('header').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
