@@ -59,60 +59,23 @@
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-
-    .error-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(255, 255, 255, 0.95);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      font-size: 2rem;
-      color: #e74c3c;
-      text-align: center;
-    }
-
-    .error-overlay p {
-      font-size: 1.2rem;
-      color: #333;
-    }
   </style>
 </head>
 <body>
 
   <div class="menu">
-    <button onclick="showSite('art')">art.fullsusmtb.org</button>
-    <button onclick="showSite('duck')">duck.quackprep.com</button>
     <button onclick="showSite('blogbott')">login-live.blogbott.com</button>
+    <button onclick="showSite('coolgames')">Cool Games</button>
   </div>
 
-  <div class="error-overlay" id="errorMessage" style="display: none;">
-    <div>
-      <h1>Error 404</h1>
-      <p>Server maintenance in progress. Please check back later.</p>
-    </div>
-  </div>
-
-  <iframe id="art" src="https://art.fullsusmtb.org" allowfullscreen allow="fullscreen"></iframe>
-  <iframe id="duck" src="https://duck.quackprep.com" allowfullscreen allow="fullscreen"></iframe>
   <iframe id="blogbott" src="https://login-live.blogbott.com" allowfullscreen allow="fullscreen"></iframe>
+  <iframe id="coolgames" src="https://a17kegher.wixsite.com/cool-games/all-games" allowfullscreen allow="fullscreen"></iframe>
 
   <script>
     function showSite(site) {
       document.querySelectorAll('iframe').forEach(frame => frame.classList.remove('active'));
       document.getElementById(site).classList.add('active');
       document.querySelector('.menu').style.display = 'none';
-      document.getElementById('errorMessage').style.display = 'flex';
-
-      // Optional: hide error after 5 seconds
-      setTimeout(() => {
-        document.getElementById('errorMessage').style.display = 'none';
-      }, 5000);
     }
   </script>
 </body>
